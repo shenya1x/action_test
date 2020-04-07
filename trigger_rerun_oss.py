@@ -1,4 +1,5 @@
 import argparse
+import requests
 
 
 OSS_SERVER = r'https://bios-ci.intel.com'
@@ -7,7 +8,9 @@ OSS_SERVER = r'https://bios-ci.intel.com'
 def trigger_rerun_oss_task(task_id, rerun_all):
     print('task_id:{}'.format(task_id))
     print('rerun_all:{}'.format(rerun_all))
-    # url = r'{}/app/rest/rerun_auto_task/?auto_task_id={}&rerun_all={}'.format(OSS_SERVER, task_id, rerun_all)
+    url = r'{}/app/rest/rerun_auto_task/?auto_task_id={}&rerun_all={}'.format(OSS_SERVER, task_id, rerun_all)
+    # res = requests.get(url)
+    # print(res.content)
     # request = urllib2.Request(url)
     # response = urllib2.urlopen(request)
     # response_data = response.read()
@@ -30,4 +33,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
