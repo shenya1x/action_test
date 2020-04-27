@@ -1,3 +1,4 @@
+import sys
 import argparse
 import requests
 
@@ -9,9 +10,13 @@ def trigger_rerun_oss_task(task_id, rerun_all):
     url = r'{}/app/rest/rerun_auto_task/?auto_task_id={}&rerun_all={}'.format(OSS_SERVER, task_id, rerun_all)
     try:
         res = requests.get(url)
-        print(res.content)
+        if res.status_code == 200:
+            print(res.content)
+            sys.exit(0)
+        else:
+            sys.exit(res.content)
     except Exception as e:
-        print('exception {} happens while request url {}'.format(e, url))
+        sys.exit('exception {} happens when request url {}'.format(e, url))
 
 
 def main():
