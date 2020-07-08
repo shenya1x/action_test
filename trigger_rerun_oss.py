@@ -26,7 +26,7 @@ def main():
         description='',
         epilog='')
     parser.add_argument('--task_id', required=True)
-    parser.add_argument('--rerun_all', required=True)
+    parser.add_argument('--rerun_all', action='store_true')
     parser.add_argument('--user', required=True)
     parser.add_argument('--password', required=True)
     args = parser.parse_args()
